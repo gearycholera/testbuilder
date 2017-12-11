@@ -99,33 +99,7 @@ describe('Visa', function() {
 });
 
 describe('MasterCard', function() {
-  // Chai lets you write more human-readable tests that throw helpful errors.
-  // Expect syntax is one way to do this, but there are others. 
-  // If you want to know more, check out the documentation. 
-  //   http://chaijs.com/api/bdd/
-  // var expect = chai.expect;
- 
-  // it('has a prefix of 51 and a length of 16', function() {
-  //   expect(detectNetwork('5112345678901234')).to.equal('MasterCard');
-  // });
- 
-  // it('has a prefix of 52 and a length of 16', function() {
-  //   expect(detectNetwork('5212345678901234')).to.equal('MasterCard');
-  // });
- 
-  // it('has a prefix of 53 and a length of 16', function() {
-  //   expect(detectNetwork('5312345678901234')).to.equal('MasterCard');
-  // });
 
- 
-
-  // You can also use should instead of expect, which changes the style
-  // slightly. It really doesn't matter which one you use - check out 
-  // http://chaijs.com/guide/styles/ for more info, but it's important
-  // to be consistent (unlike in this file, where we use BOTH expect
-  // and should, but that's just for learning), so once you've gotten 
-  // these tests to pass using should syntax, refactor your tests to 
-  // use either expect or should, but not both. 
   var should = chai.should();
 
   it('has a prefix of 51 and a length of 16', function() {
@@ -150,10 +124,8 @@ describe('MasterCard', function() {
  
 });
 
-
 describe('Discover', function() {
-  // Tests without a function will be marked as "pending" and not run
-  // Implement these tests (and others) and make them pass!
+
   var should = chai.should();
 
   it('has a prefix of 6011 and a length of 16', function() {
@@ -164,202 +136,63 @@ describe('Discover', function() {
     detectNetwork('6011123456789012345').should.equal('Discover');
   });
 
-  it('has a prefix of 644 and a length of 16', function() {
-    detectNetwork('6441234567890123').should.equal('Discover');
-  });
-
-  it('has a prefix of 644 and a length of 19', function() {
-    detectNetwork('6441234567890123456').should.equal('Discover');
-  });
-
-  it('has a prefix of 645 and a length of 16', function() {
-    detectNetwork('6451234567890123').should.equal('Discover');
-  });
-
-  it('has a prefix of 645 and a length of 19', function() {
-    detectNetwork('6451234567890123456').should.equal('Discover');
-  });
-
-  it('has a prefix of 646 and a length of 16', function() {
-    detectNetwork('6461234567890123').should.equal('Discover');
-  });
-
-  it('has a prefix of 646 and a length of 19', function() {
-    detectNetwork('6461234567890123456').should.equal('Discover');
-  });
-
-  it('has a prefix of 647 and a length of 16', function() {
-    detectNetwork('6471234567890123').should.equal('Discover');
-  });
-
-  it('has a prefix of 647 and a length of 19', function() {
-    detectNetwork('6471234567890123456').should.equal('Discover');
-  });
-
-  it('has a prefix of 648 and a length of 16', function() {
-    detectNetwork('6481234567890123').should.equal('Discover');
-  });
-
-  it('has a prefix of 648 and a length of 19', function() {
-    detectNetwork('6481234567890123456').should.equal('Discover');
-  });
-
-  it('has a prefix of 649 and a length of 16', function() {
-    detectNetwork('6491234567890123').should.equal('Discover');
-  });
-
-  it('has a prefix of 649 and a length of 19', function() {
-    detectNetwork('6491234567890123456').should.equal('Discover');
-  });  
-
   it('has a prefix of 65 and a length of 16', function() {
     detectNetwork('6512345678901234').should.equal('Discover');
   });
 
   it('has a prefix of 65 and a length of 19', function() {
     detectNetwork('6512345678901234567').should.equal('Discover');
-  });
+  }); 
+  
+  for (var pre = 644; pre <= 649; pre++) {
+    (function(pre) {
+      it('has a prefix of ' + pre + ' and a length of 16', function() {
+        detectNetwork(pre + '1234567890123').should.equal('Discover');
+      });
+
+      it('has a prefix of ' + pre + ' and a length of 19', function() {
+        detectNetwork(pre + '1234567890123456').should.equal('Discover');
+      });
+    })(pre)
+  }
 
 });
 
+
 describe('Maestro', function() {
-  // Write full test coverage for the Maestro card
+  
   var should = chai.should();
 
-  it('has a prefix of 5018 and length of 12', function() {
-    detectNetwork('501812345678').should.equal('Maestro');
-  });
-
-  it('has a prefix of 5018 and length of 13', function() {
-    detectNetwork('5018123456789').should.equal('Maestro');
-  });
-
-  it('has a prefix of 5018 and length of 14', function() {
-    detectNetwork('50181234567890').should.equal('Maestro');
-  });
-
-  it('has a prefix of 5018 and length of 15', function() {
-    detectNetwork('501812345678901').should.equal('Maestro');
-  });
-
-  it('has a prefix of 5018 and length of 16', function() {
-    detectNetwork('5018123456789012').should.equal('Maestro');
-  });
-
-  it('has a prefix of 5018 and length of 17', function() {
-    detectNetwork('50181234567890123').should.equal('Maestro');
-  });
-
-  it('has a prefix of 5018 and length of 18', function() {
-    detectNetwork('501812345678901234').should.equal('Maestro');
-  });
-
-  it('has a prefix of 5018 and length of 19', function() {
-    detectNetwork('5018123456789012345').should.equal('Maestro');
-  });
-
-  //------------------------------------------------------
-
-  it('has a prefix of 5020 and length of 12', function() {
-    detectNetwork('502012345678').should.equal('Maestro');
-  });
-
-  it('has a prefix of 5020 and length of 13', function() {
-    detectNetwork('5020123456789').should.equal('Maestro');
-  });
-
-  it('has a prefix of 5020 and length of 14', function() {
-    detectNetwork('50201234567890').should.equal('Maestro');
-  });
-
-  it('has a prefix of 5020 and length of 15', function() {
-    detectNetwork('502012345678901').should.equal('Maestro');
-  });
-
-  it('has a prefix of 5020 and length of 16', function() {
-    detectNetwork('5020123456789012').should.equal('Maestro');
-  });
-
-  it('has a prefix of 5020 and length of 17', function() {
-    detectNetwork('50201234567890123').should.equal('Maestro');
-  });
-
-  it('has a prefix of 5020 and length of 18', function() {
-    detectNetwork('502012345678901234').should.equal('Maestro');
-  });
-
-  it('has a prefix of 5020 and length of 19', function() {
-    detectNetwork('5020123456789012345').should.equal('Maestro');
-  });
-
-  //------------------------------------------------------
-
-  it('has a prefix of 5038 and length of 12', function() {
-    detectNetwork('503812345678').should.equal('Maestro');
-  });
-
-  it('has a prefix of 5038 and length of 13', function() {
-    detectNetwork('5038123456789').should.equal('Maestro');
-  });
-
-  it('has a prefix of 5038 and length of 14', function() {
-    detectNetwork('50381234567890').should.equal('Maestro');
-  });
-
-  it('has a prefix of 5038 and length of 15', function() {
-    detectNetwork('503812345678901').should.equal('Maestro');
-  });
-
-  it('has a prefix of 5038 and length of 16', function() {
-    detectNetwork('5038123456789012').should.equal('Maestro');
-  });
-
-  it('has a prefix of 5038 and length of 17', function() {
-    detectNetwork('50381234567890123').should.equal('Maestro');
-  });
-
-  it('has a prefix of 5038 and length of 18', function() {
-    detectNetwork('503812345678901234').should.equal('Maestro');
-  });
-
-  it('has a prefix of 5038 and length of 19', function() {
-    detectNetwork('5038123456789012345').should.equal('Maestro');
-  });
-
-  //------------------------------------------------------
-
-  it('has a prefix of 6304 and length of 12', function() {
-    detectNetwork('630412345678').should.equal('Maestro');
-  });
-
-  it('has a prefix of 6304 and length of 13', function() {
-    detectNetwork('6304123456789').should.equal('Maestro');
-  });
-
-  it('has a prefix of 6304 and length of 14', function() {
-    detectNetwork('63041234567890').should.equal('Maestro');
-  });
-
-  it('has a prefix of 6304 and length of 15', function() {
-    detectNetwork('630412345678901').should.equal('Maestro');
-  });
-
-  it('has a prefix of 6304 and length of 16', function() {
-    detectNetwork('6304123456789012').should.equal('Maestro');
-  });
-
-  it('has a prefix of 6304 and length of 17', function() {
-    detectNetwork('63041234567890123').should.equal('Maestro');
-  });
-
-  it('has a prefix of 6304 and length of 18', function() {
-    detectNetwork('630412345678901234').should.equal('Maestro');
-  });
-
-  it('has a prefix of 6304 and length of 19', function() {
-    detectNetwork('6304123456789012345').should.equal('Maestro');
-  });
-
+  var fourDigits = ['5018', '5020', '5038', '6304']
+  for (var i = 0; i < fourDigits.length; i++) {
+    var prefix = fourDigits[i];
+    (function(prefix) {
+      it('has a prefix of ' + prefix + ' and a length of 12', function() {
+        detectNetwork(prefix + '12345678').should.equal('Maestro');
+      });
+      it('has a prefix of ' + prefix + ' and a length of 13', function() {
+        detectNetwork(prefix + '123456789').should.equal('Maestro');
+      });
+      it('has a prefix of ' + prefix + ' and a length of 14', function() {
+        detectNetwork(prefix + '1234567890').should.equal('Maestro');
+      });
+      it('has a prefix of ' + prefix + ' and a length of 15', function() {
+        detectNetwork(prefix + '12345678901').should.equal('Maestro');
+      });
+      it('has a prefix of ' + prefix + ' and a length of 16', function() {
+        detectNetwork(prefix + '123456789012').should.equal('Maestro');
+      });
+      it('has a prefix of ' + prefix + ' and a length of 17', function() {
+        detectNetwork(prefix + '1234567890123').should.equal('Maestro');
+      });
+      it('has a prefix of ' + prefix + ' and a length of 18', function() {
+        detectNetwork(prefix + '12345678901234').should.equal('Maestro');
+      });
+      it('has a prefix of ' + prefix + ' and a length of 19', function() {
+        detectNetwork(prefix + '123456789012345').should.equal('Maestro');
+      });
+    })(prefix)
+  }
 });
 
 describe('China UnionPay', function() {
