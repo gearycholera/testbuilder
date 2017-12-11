@@ -28,7 +28,8 @@ var detectNetwork = function(cardNumber) {
   	return 'American Express';
   }
 
-  if ([16,18,19].includes(len) && ((['4903', '4905', '4911', '4936', '6333', '6759'].includes(firstFour) || ['564182', '633110'].includes(firstSix)))) {
+  if ([16,18,19].includes(len) && 
+  	((['4903', '4905', '4911', '4936', '6333', '6759'].includes(firstFour) || ['564182', '633110'].includes(firstSix)))) {
   	return 'Switch';
   }
 
@@ -48,17 +49,9 @@ var detectNetwork = function(cardNumber) {
   	return 'Maestro';
   }
 
-  if ((Number(firstSix) >= 622126 && Number(firstSix) <= 622925) || (Number(firstThree) >= 624 && Number(firstThree) <= 626) || (Number(firstFour) >= 6282 && Number(firstFour) <= 6288) && ([16, 17, 18, 19].includes(len))) {
+  if ((Number(firstSix) >= 622126 && Number(firstSix) <= 622925) || 
+  	(Number(firstThree) >= 624 && Number(firstThree) <= 626) || 
+  	(Number(firstFour) >= 6282 && Number(firstFour) <= 6288) && ([16, 17, 18, 19].includes(len))) {
   	return 'China UnionPay';
   }
-
-  
-
 };
-
-
-// China UnionPay always has a prefix of 622126-622925, 624-626, or 6282-6288 and a length of 16-19.
-// Switch always has a prefix of 4903, 4905, 4911, 4936, 564182, 633110, 6333, or 6759 and a length of 16, 18, or 19.
-
-//Visa always has a prefix of 4 and a length of 13, 16, or 19.
-//MasterCard always has a prefix of 51, 52, 53, 54, or 55 and a length of 16.
