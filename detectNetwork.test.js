@@ -103,19 +103,20 @@ describe('MasterCard', function() {
   // Expect syntax is one way to do this, but there are others. 
   // If you want to know more, check out the documentation. 
   //   http://chaijs.com/api/bdd/
-  var expect = chai.expect;
+  // var expect = chai.expect;
  
-  it(FILL_ME_IN, function() {
-    expect(detectNetwork('5112345678901234')).to.equal('MasterCard');
-  });
+  // it('has a prefix of 51 and a length of 16', function() {
+  //   expect(detectNetwork('5112345678901234')).to.equal('MasterCard');
+  // });
  
-  it(FILL_ME_IN, function() {
-    expect(detectNetwork('5212345678901234')).to.equal('MasterCard');
-  });
+  // it('has a prefix of 52 and a length of 16', function() {
+  //   expect(detectNetwork('5212345678901234')).to.equal('MasterCard');
+  // });
  
-  it(FILL_ME_IN, function() {
-    expect(detectNetwork('5312345678901234')).to.equal('MasterCard');
-  });
+  // it('has a prefix of 53 and a length of 16', function() {
+  //   expect(detectNetwork('5312345678901234')).to.equal('MasterCard');
+  // });
+
  
 
   // You can also use should instead of expect, which changes the style
@@ -126,13 +127,25 @@ describe('MasterCard', function() {
   // these tests to pass using should syntax, refactor your tests to 
   // use either expect or should, but not both. 
   var should = chai.should();
+
+  it('has a prefix of 51 and a length of 16', function() {
+    detectNetwork('5112345678901234').should.equal('MasterCard');
+  });
+
+  it('has a prefix of 52 and a length of 16', function() {
+    detectNetwork('5212345678901234').should.equal('MasterCard');
+  });
+
+  it('has a prefix of 53 and a length of 16', function() {
+    detectNetwork('5312345678901234').should.equal('MasterCard');
+  });
   
   it('has a prefix of 54 and a length of 16', function() {
-    detectNetwork('5412345678901234').should.equal(FILL_ME_IN);
+    detectNetwork('5412345678901234').should.equal('MasterCard');
   });
  
   it('has a prefix of 55 and a length of 16', function() {
-    detectNetwork('5512345678901234').should.equal(FILL_ME_IN);
+    detectNetwork('5512345678901234').should.equal('MasterCard');
   })
  
 });
